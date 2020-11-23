@@ -4,6 +4,7 @@ import Container from "@material-ui/core/Container";
 import Directories from "./Directories";
 import makeStyles from '@material-ui/core/styles/makeStyles';
 import Header from "../components/Header";
+import Footer from "../components/Footer";
 
 //pages
 import Home from './Home';
@@ -25,6 +26,7 @@ export default function() {
                     <Route exact path={Directories.HOME} component={Home}/>
                 </Switch>
             </main>
+            <Footer/>
         </BrowserRouter>
     )
 }
