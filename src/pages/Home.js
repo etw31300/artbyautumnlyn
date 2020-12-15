@@ -4,9 +4,10 @@ import Paper from "@material-ui/core/Paper";
 import Carousel from "react-material-ui-carousel";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 
-import marilynMonroe from '../res/images/sketches/Marilyn_Monroe.jpg';
-import kindredKitties from '../res/images/art1/Kindred_Kitties.PNG';
-import greta from '../res/images/sketches/greta.jpg';
+import ivyAnimation from '../res/animations/ivy_animation.gif';
+import marilynMonroe from '../res/images/Marilyn_Monroe.jpg';
+import kindredKitties from '../res/images/Kindred_Kitties.png';
+import greta from '../res/images/greta.jpg';
 import woodElves from '../res/images/wood_elves.jpg';
 import waterfall from '../res/images/waterfall.jpg';
 
@@ -30,6 +31,9 @@ const Home = (props) => {
                   navButtonsAlwaysInvisible={true}
                   indicators={false}
                   timeout={1000}>
+            <Paper>
+                <img className={classes.image} src={ivyAnimation} alt="Animation of Ivy"/>
+            </Paper>
             <Paper>
                 <img className={classes.image} src={marilynMonroe} alt="Marilyn Monroe sketch"/>
             </Paper>
