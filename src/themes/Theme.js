@@ -1,19 +1,19 @@
 import {createMuiTheme} from "@material-ui/core/styles";
-import red from "@material-ui/core/colors/red";
 
 const Theme = createMuiTheme({
     palette: {
         primary: {
-            main: "#afafaf",
-            light: "#ffffff",
-            dark: "#000000"
+            main: "#7a89c4",
+            light: "#abb9f7",
+            dark: "#4b5c93"
         },
-    },
-    margins: {
-        main: {
-            top: "50px"
+        secondary: {
+            main: "#646665",
+            light: "#929493",
+            dark: "#3a3c3b"
         }
-    }
+    },
+    spacing: 15
 });
 
 export default Theme;

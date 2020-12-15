@@ -8,10 +8,12 @@ import Footer from "../components/Footer";
 
 //pages
 import Home from './Home';
+import Portfolio from './Portfolio';
+import About from './About';
+import Contact from './Contact';
 
 const useStyles = makeStyles((theme) => ({
     main: {
-        marginTop: theme.margins.main.top,
     }
 }));
 
@@ -24,6 +26,9 @@ export default function() {
             <main className={classes.main}>
                 <Switch>
                     <Route exact path={Directories.HOME} component={Home}/>
+                    <Route exact path={Directories.PORTFOLIO} component={Portfolio}/>
+                    <Route exact path={Directories.ABOUT} component={About}/>
+                    <Route exact path={Directories.CONTACT} component={Contact}/>
                 </Switch>
             </main>
             <Footer/>

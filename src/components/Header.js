@@ -2,17 +2,29 @@ import React from 'react';
 import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
+import NavLinks from "./NavLinks";
+import bannerLogo from "../res/images/banner_logo.png";
 
 const useStyles = makeStyles((theme) => ({
-    header: {}
+    header: {
+        position: "relative",
+    },
+    logo: {
+        width: "33%"
+    }
 }));
 
 const Header = (props) => {
     const classes = useStyles();
 
     return (
-        <Container component="header" className={classes.header}>
-            <Typography component="h1" variant="h5">Autumn Wallace</Typography>
+        <Container component="header"
+                   maxWidth={false}
+                   className={classes.header}>
+            <Container component="div">
+                <img className={classes.logo} src={bannerLogo} alt="Logo"/>
+                <NavLinks/>
+            </Container>
         </Container>
     )
 }
