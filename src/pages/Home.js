@@ -1,54 +1,65 @@
-import React from 'react';
-import Container from '@material-ui/core/Container';
-import Paper from "@material-ui/core/Paper";
+import React, {useLayoutEffect, useState} from 'react';
 import Carousel from "react-material-ui-carousel";
 import makeStyles from "@material-ui/core/styles/makeStyles";
-
-import ivyAnimation from '../res/animations/ivy_animation.gif';
-import marilynMonroe from '../res/images/Marilyn_Monroe.jpg';
-import kindredKitties from '../res/images/Kindred_Kitties.png';
-import greta from '../res/images/greta.jpg';
-import woodElves from '../res/images/wood_elves.jpg';
-import waterfall from '../res/images/waterfall.jpg';
+import GetCarouselImages from "../components/firebase/GetCarouselImages";
+import DownloadImage from "../components/firebase/DownloadImage";
 
 const useStyles = makeStyles((theme) => ({
     image: {
         width: "100%"
     },
-    slideShowContainer: {
+    carousel: {
         position: "fixed",
         width: "100%",
         margin: "0",
         padding: "0",
+        top: "0"
     }
 }));
 
 const Home = (props) => {
     const classes = useStyles();
+    const [images, setImages] = useState([]);
+    const [fetchingImages, setFetchingImages] = useState(false);
+    const [imagesLoaded, setImagesLoaded] = useState(false);
+    const [loadFailed, setLoadFailed] = useState(false);
+
+    useLayoutEffect(() => {
+        if (fetchingImages || imagesLoaded || loadFailed) return;
+        setFetchingImages(true);
+        GetCarouselImages((err, response) => {
+            if (err) {
+                console.error(err);
+                setLoadFailed(true);
+            }
+            else {
+                response.forEach((image) => {
+                    DownloadImage(image, (err, url) => {
+                        if (err)
+                            console.error(err);
+                        else {
+                            setImages((prevState) => {
+                                return prevState.concat(url);
+                            })
+                        }
+                    })
+                })
+                setImagesLoaded(true);
+            }
+            setFetchingImages(false);
+        })
+    }, [fetchingImages, imagesLoaded, loadFailed])
 
     return (
-        <Carousel className={classes.slideShowContainer}
+        <Carousel className={classes.carousel}
                   navButtonsAlwaysInvisible={true}
                   indicators={false}
-                  timeout={1000}>
-            <Paper>
-                <img className={classes.image} src={ivyAnimation} alt="Animation of Ivy"/>
-            </Paper>
-            <Paper>
-                <img className={classes.image} src={marilynMonroe} alt="Marilyn Monroe sketch"/>
-            </Paper>
-            <Paper>
-                <img className={classes.image} src={kindredKitties} alt="Kindred Kitties T-Shirt Drawing"/>
-            </Paper>
-            <Paper>
-                <img className={classes.image} src={greta} alt="Greta"/>
-            </Paper>
-            <Paper>
-                <img className={classes.image} src={woodElves} alt="Digital drawing of wood elves"/>
-            </Paper>
-            <Paper>
-                <img className={classes.image} src={waterfall} alt="Digital drawing of a waterfall"/>
-            </Paper>
+                  timeout={1000} changeOnFirstRender={true}>
+            {
+                images.map((image) => (
+                    <img className={classes.image} src={image} alt="Featured artwork"/>
+                ))
+            }
         </Carousel>
     );
 }

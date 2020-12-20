@@ -3,8 +3,8 @@ import {BrowserRouter, Switch, Route} from 'react-router-dom';
 import Container from "@material-ui/core/Container";
 import Directories from "./Directories";
 import makeStyles from '@material-ui/core/styles/makeStyles';
-import Header from "../components/Header";
-import Footer from "../components/Footer";
+import Header from "../components/shared/Header";
+import Footer from "../components/shared/Footer";
 
 //pages
 import Home from './Home';

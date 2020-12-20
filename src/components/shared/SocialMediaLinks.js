@@ -1,5 +1,5 @@
 import React from 'react';
-import Directories from "../pages/Directories";
+import Directories from "../../pages/Directories";
 import InstagramIcon from "@material-ui/icons/Instagram";
 import LinkedInIcon from "@material-ui/icons/LinkedIn";
 import makeStyles from "@material-ui/core/styles/makeStyles";

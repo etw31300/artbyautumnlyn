@@ -3,8 +3,8 @@ import Container from "@material-ui/core/Container";
 import Typography from "@material-ui/core/Typography";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import {Link} from "react-router-dom";
-import Directories from "../pages/Directories";
-import FooterIsAbsolute from "./controls/FooterIsAbsolute";
+import Directories from "../../pages/Directories";
+import FooterIsAbsolute from "./FooterIsAbsolute";
 
 const useStyles = makeStyles((theme) => ({
     footer: {
@@ -30,8 +30,8 @@ const Footer = (props) => {
                    maxWidth={false}
                    className={[classes.footer, isAbsolute ? classes.absolute : null]}>
             <Typography align="center" component="p" variant="subtitle1">
-                Artwork and Page Design by <Link to={Directories.HOME}>Autumn Wallace</Link>
-                &nbsp;Page Created by <a href="http://www.elijahwallace-portfolio.com/" target="_blank">Eli Wallace</a>
+                &copy; 2020 Autumn Wallace. Page Design and Artwork created by <Link to={Directories.HOME}>Autumn Wallace</Link>
+                &nbsp;Page created by <a href="http://www.elijahwallace-portfolio.com/" target="_blank" rel="noreferrer">Eli Wallace</a>
             </Typography>
         </Container>
     );

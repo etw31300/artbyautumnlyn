@@ -1,6 +1,6 @@
 import React from 'react';
 import {Link} from 'react-router-dom'
-import Directories from "../pages/Directories";
+import Directories from "../../pages/Directories";
 import Container from "@material-ui/core/Container";
 import makeStyles from "@material-ui/core/styles/makeStyles";
 import SocialMediaLinks from "./SocialMediaLinks";
